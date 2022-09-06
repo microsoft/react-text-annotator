@@ -1,26 +1,50 @@
 {
-  "name": "react-text-annotater",
+  "name": "@microsoft/react-text-annotater",
+  "repository": "",
+  "author": "Mohamed AboBakr <moabobakr@microsoft.com>",
+  "license": "MIT",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
+    "@fluentui/react": "^8.56.1",
+    "@types/enzyme": "^3.9.3",
+    "@types/jest": "^27.0.2",
+    "@types/lodash.debounce": "^4.0.6",
+    "@types/lodash.range": "^3.2.6",
     "@types/node": "^16.11.56",
-    "@types/react": "^18.0.18",
-    "@types/react-dom": "^18.0.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/styled-components": "^5.1.15",
+    "cross-env": "^5.2.0",
+    "entities": "^4.3.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
+    "husky": "^3.0.2",
+    "is-number": "^7.0.0",
+    "jest": "^27.3.1",
+    "jest-diff": "^29.0.1",
+    "jest-localstorage-mock": "^2.4.0",
+    "jest-regex-util": "^29.0.0",
+    "lodash.debounce": "^4.0.8",
+    "lodash.range": "^3.2.0",
+    "mobx": "^5.13.0",
+    "mobx-react": "^6.1.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.8.6",
     "react-scripts": "5.0.1",
-    "typescript": "^4.8.2",
-    "web-vitals": "^2.1.4"
+    "styled-components": "^5.3.3",
+    "ts-jest": "^27.0.7",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4",
+    "use-deep-compare-effect": "^1.8.1"
+
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test": "cross-env NODE_OPTIONS=--unhandled-rejections=strict jest --maxWorkers=50%"
   },
   "eslintConfig": {
     "extends": [
@@ -38,6 +62,44 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "./tools/jest/setupTests.js",
+      "jest-localstorage-mock"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false,
+        "isolatedModules": true
+      }
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "@fluentui/react/lib/(.*)$": "@fluentui/react/lib-commonjs/$1",
+      "^.+\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "moduleDirectories": [
+      "<rootDir>/node_modules",
+      "<rootDir>"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest",
+      "^.+\\.(svg)$": "<rootDir>/tools/jest/svgTransform.js"
+    },
+    "testRegex": "(/.*(\\.|/)(test|spec))\\.[jt]sx?$",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
     ]
   }
 }

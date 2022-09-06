@@ -1,0 +1,95 @@
+"filename", "language", "TypeScript React", "TypeScript", "Markdown", "comment", "blank", "total"
+"c:\Users\moabobakr\Documents\react-text-annotater\src\index.tsx", "TypeScript React", 142, 0, 0, 3, 18, 163
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\Labeler.test.tsx", "TypeScript React", 100, 0, 0, 3, 29, 132
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\controllers\LayoutController.tsx", "TypeScript React", 164, 0, 0, 17, 20, 201
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\controllers\SvgLayoutController.tsx", "TypeScript React", 92, 0, 0, 4, 12, 108
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\controllers\__tests__\LayoutController.test.tsx", "TypeScript React", 88, 0, 0, 3, 24, 115
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\controllers\__tests__\SvgLayoutController.test.tsx", "TypeScript React", 119, 0, 0, 3, 41, 163
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\renderers\BracketsRenderer.tsx", "TypeScript React", 60, 0, 0, 3, 12, 75
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\renderers\LineRenderer.tsx", "TypeScript React", 122, 0, 0, 3, 17, 142
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\renderers\TokenRenderer.tsx", "TypeScript React", 27, 0, 0, 3, 8, 38
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\renderers\__tests__\BracketsRenderer.test.tsx", "TypeScript React", 61, 0, 0, 3, 18, 82
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\renderers\__tests__\LineRenderer.test.tsx", "TypeScript React", 132, 0, 0, 3, 46, 181
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\renderers\__tests__\TokenRenderer.test.tsx", "TypeScript React", 57, 0, 0, 3, 17, 77
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\SvgRootRenderer.tsx", "TypeScript React", 48, 0, 0, 3, 9, 60
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\__tests__\BoxSvgRenderer.test.tsx", "TypeScript React", 90, 0, 0, 3, 24, 117
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\__tests__\RelationSvgRenderer.test.tsx", "TypeScript React", 53, 0, 0, 3, 15, 71
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\__tests__\SvgRootRenderer.test.tsx", "TypeScript React", 33, 0, 0, 3, 11, 47
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\__tests__\UnderlineSvgRenderer.test.tsx", "TypeScript React", 49, 0, 0, 3, 15, 67
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\shapes\BaseShapeSvgRenderer.tsx", "TypeScript React", 58, 0, 0, 3, 9, 70
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\shapes\BoxSvgRenderer.tsx", "TypeScript React", 65, 0, 0, 3, 13, 81
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\shapes\RelationSvgRenderer.tsx", "TypeScript React", 69, 0, 0, 10, 15, 94
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\shapes\UnderlineSvgRenderer.tsx", "TypeScript React", 57, 0, 0, 3, 9, 69
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\utilities\ArrowheadSvgRenderer.tsx", "TypeScript React", 38, 0, 0, 10, 8, 56
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\utilities\MultiLineSvgRenderer.tsx", "TypeScript React", 27, 0, 0, 3, 5, 35
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\utilities\NameSvgRenderer.tsx", "TypeScript React", 100, 0, 0, 3, 13, 116
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\utilities\ResizeKnobsSvgRenderer.tsx", "TypeScript React", 67, 0, 0, 3, 12, 82
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\utilities\TooltipRenderer.tsx", "TypeScript React", 61, 0, 0, 3, 12, 76
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\utilities\__tests__\NameSvgRenderer.test.tsx", "TypeScript React", 20, 0, 0, 3, 6, 29
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\components\svgRenderers\utilities\__tests__\TooltipRenderer.test.tsx", "TypeScript React", 28, 0, 0, 3, 9, 40
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\docs\labeler.md", "Markdown", 0, 0, 152, 0, 78, 230
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\docs\labelerTypes.md", "Markdown", 0, 0, 90, 0, 56, 146
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\docs\labelingRenderers.md", "Markdown", 0, 0, 11, 0, 10, 21
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\docs\labelingStores.md", "Markdown", 0, 0, 30, 0, 24, 54
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\docs\languages.md", "Markdown", 0, 0, 10, 0, 10, 20
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\docs\svgRenderers.md", "Markdown", 0, 0, 55, 0, 32, 87
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\docs\utils\annotationUtils.md", "Markdown", 0, 0, 20, 0, 20, 40
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\docs\utils\lineUtils.md", "Markdown", 0, 0, 24, 0, 22, 46
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\docs\utils\svgUtils.md", "Markdown", 0, 0, 145, 0, 55, 200
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\docs\virtualization.md", "Markdown", 0, 0, 35, 0, 27, 62
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\__tests__\useAnnotationResizer.test.tsx", "TypeScript React", 37, 0, 0, 3, 10, 50
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\__tests__\useCalculateLineInfos.test.tsx", "TypeScript React", 58, 0, 0, 3, 16, 77
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\__tests__\useInitializeLayoutController.test.tsx", "TypeScript React", 54, 0, 0, 3, 13, 70
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\__tests__\useLabelerGlobalEventListeners.test.tsx", "TypeScript React", 147, 0, 0, 3, 45, 195
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\__tests__\useSelectionDisableReaction.test.tsx", "TypeScript React", 35, 0, 0, 3, 14, 52
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\__tests__\useSelectionReaction.test.tsx", "TypeScript React", 56, 0, 0, 3, 15, 74
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\__tests__\useVirtualizer.test.tsx", "TypeScript React", 106, 0, 0, 3, 33, 142
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useAnnotationIndexConverter.ts", "TypeScript", 0, 17, 0, 12, 3, 32
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useAnnotationResizer.ts", "TypeScript", 0, 47, 0, 9, 12, 68
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useCalculateLineInfos.ts", "TypeScript", 0, 36, 0, 13, 5, 54
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useInitializeLayoutController.ts", "TypeScript", 0, 29, 0, 3, 5, 37
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useLabelerConfigsSyncer.ts", "TypeScript", 0, 9, 0, 10, 3, 22
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useLabelerDimensionsSetterAfterScrolling.ts", "TypeScript", 0, 24, 0, 11, 4, 39
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useLabelerGlobalEventListeners.ts", "TypeScript", 0, 72, 0, 3, 13, 88
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useResizeWatcher.ts", "TypeScript", 0, 11, 0, 3, 5, 19
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useSelectionDisableReaction.ts", "TypeScript", 0, 17, 0, 12, 3, 32
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useSelectionReaction.ts", "TypeScript", 0, 30, 0, 13, 3, 46
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useTokenEventListeners.ts", "TypeScript", 0, 17, 0, 11, 6, 34
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\hooks\useVirtualizer.ts", "TypeScript", 0, 96, 0, 64, 27, 187
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\BaseTokenStore.ts", "TypeScript", 0, 9, 0, 3, 5, 17
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\LabelerA11yStore.ts", "TypeScript", 0, 196, 0, 101, 44, 341
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\LabelerAnnotationsStore.ts", "TypeScript", 0, 41, 0, 8, 13, 62
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\LabelerConfigStore.ts", "TypeScript", 0, 91, 0, 6, 23, 120
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\LabelerSelectionStore.ts", "TypeScript", 0, 85, 0, 3, 25, 113
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\LabelerStore.ts", "TypeScript", 0, 52, 0, 20, 18, 90
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\LabelerVirtualizationStore.ts", "TypeScript", 0, 39, 0, 3, 13, 55
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\LineStore.ts", "TypeScript", 0, 16, 0, 13, 8, 37
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\TokenStore.ts", "TypeScript", 0, 6, 0, 3, 3, 12
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\__tests__\LabelerA11yStore.test.ts", "TypeScript", 0, 212, 0, 3, 60, 275
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\__tests__\LabelerAnnotationsStore.test.ts", "TypeScript", 0, 66, 0, 3, 12, 81
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\__tests__\LabelerConfigStore.test.ts", "TypeScript", 0, 64, 0, 3, 16, 83
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\__tests__\LabelerSelectionStore.test.ts", "TypeScript", 0, 128, 0, 3, 46, 177
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\__tests__\LabelerStore.test.ts", "TypeScript", 0, 33, 0, 3, 9, 45
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\stores\__tests__\LabelerVirtualizationStore.test.ts", "TypeScript", 0, 47, 0, 3, 19, 69
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\theming\labelerTheme.ts", "TypeScript", 0, 21, 0, 3, 3, 27
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\theming\styled.d.ts", "TypeScript", 0, 23, 0, 3, 3, 29
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\types\labelerProps.ts", "TypeScript", 0, 38, 0, 97, 23, 158
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\types\labelerTypes.ts", "TypeScript", 0, 89, 0, 21, 14, 124
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\LabelerMockProvider.tsx", "TypeScript React", 17, 0, 0, 3, 5, 25
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\__tests__\annotationUtils.test.ts", "TypeScript", 0, 347, 0, 3, 72, 422
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\__tests__\lineUtils.test.ts", "TypeScript", 0, 276, 0, 3, 68, 347
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\__tests__\svgUtils.test.ts", "TypeScript", 0, 311, 0, 3, 26, 340
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\__tests__\tokenUtils.test.ts", "TypeScript", 0, 358, 0, 3, 73, 434
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\annotationUtils.ts", "TypeScript", 0, 131, 0, 52, 26, 209
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\eventUtils.ts", "TypeScript", 0, 65, 0, 12, 22, 99
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\keyboardUtils.ts", "TypeScript", 0, 5, 0, 3, 2, 10
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\labelerConstants.ts", "TypeScript", 0, 58, 0, 5, 12, 75
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\labelerStoreContext.ts", "TypeScript", 0, 4, 0, 3, 3, 10
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\languageUtils.ts", "TypeScript", 0, 76, 0, 4, 5, 85
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\lineUtils.ts", "TypeScript", 0, 258, 0, 87, 53, 398
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\mergeFunctionObjects.ts", "TypeScript", 0, 24, 0, 7, 3, 34
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\resizeWatcher.ts", "TypeScript", 0, 60, 0, 20, 21, 101
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\svgUtils.ts", "TypeScript", 0, 232, 0, 61, 34, 327
+"c:\Users\moabobakr\Documents\react-text-annotater\src\labeler\utils\tokenUtils.ts", "TypeScript", 0, 199, 0, 111, 43, 353
+"c:\Users\moabobakr\Documents\react-text-annotater\src\react-app-env.d.ts", "TypeScript", 0, 0, 0, 1, 1, 2
+"Total", "-", 2537, 4065, 572, 981, 1842, 9997
