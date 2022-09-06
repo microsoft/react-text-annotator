@@ -1,6 +1,6 @@
-# react-text-annotater
+# react-text-annotator
 
-react-text-annotater is a labeler component that:
+react-text-annotator is a labeler component that:
 
 -   Lays out text and overlays textual decorations like labels, predictions, and relations based on given data.
 -   Handles user interactions on tokens.
