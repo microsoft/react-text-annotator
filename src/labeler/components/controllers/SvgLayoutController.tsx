@@ -16,7 +16,6 @@ import {
     SvgRendererKind
 } from '../../types/labelerTypes';
 import { isAnnotationWithinIndices, sortAnnotations } from '../../utils/annotationUtils';
-import { RTL_ANNOTATION_X_OFFSET } from '../../utils/labelerConstants';
 import { useLabelerStore } from '../../utils/labelerStoreContext';
 import {
     labelAnnotationToSvgPropsFactory,
@@ -75,13 +74,7 @@ export const SvgLayoutController = observer(<T extends ITokenStore>(props: SvgCo
                     annotationsPerTokenMap: annotationStore.annotationsPerTokenMap,
                     containerCoordinates: containerRef.current.getBoundingClientRect(),
                     scrollOffset: {
-                        x:
-                            containerRef.current.scrollLeft -
-                            (configStore.isRtl
-                                ? containerRef.current.scrollHeight > containerRef.current.clientHeight
-                                    ? labelerStore.svgLayerXOffset - RTL_ANNOTATION_X_OFFSET
-                                    : 0
-                                : 0),
+                        x: containerRef.current.scrollLeft - (configStore.isRtl ? labelerStore.svgLayerXOffset : 0),
                         y: containerRef.current.scrollTop
                     },
                     getTokenElementByIndex: index => getNewLabelerTokenElementByIndex(containerRef.current, index)
