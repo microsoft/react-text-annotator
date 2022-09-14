@@ -7,7 +7,7 @@ import { LabelerSelectionStore } from '../stores/LabelerSelectionStore';
 import { LineStore } from '../stores/LineStore';
 import { AnnotationData, ITokenStore, TokenEventListenersFactory, TokenPaddingCalculator } from '../types/labelerTypes';
 import {
-    LuisKeyCodes,
+    LabelerKeyCodes,
     RELATION_NAME_Y_OFFSET,
     RELATION_STROKE_WIDTH,
     tokenDataAttribute,
@@ -164,15 +164,15 @@ const tokenRendererSelectionInteractions = <T extends ITokenStore>({
     event: React.KeyboardEvent;
     selectionStore: LabelerSelectionStore;
 }) => {
-    if (event.key === LuisKeyCodes.Enter || event.key === LuisKeyCodes.Space) {
+    if (event.key === LabelerKeyCodes.Enter || event.key === LabelerKeyCodes.Space) {
         selectionStore.select(tokenStore.index);
 
         return true;
     }
 
-    if (event.key === LuisKeyCodes.ArrowRight || event.key === LuisKeyCodes.ArrowLeft) {
-        const nextTokenIndex = event.key === LuisKeyCodes.ArrowRight ? tokenStore.index + 1 : tokenStore.index - 1;
-        const isOutOfBounds = event.key === LuisKeyCodes.ArrowRight ? nextTokenIndex >= selectionStore.tokenCount : nextTokenIndex < 0;
+    if (event.key === LabelerKeyCodes.ArrowRight || event.key === LabelerKeyCodes.ArrowLeft) {
+        const nextTokenIndex = event.key === LabelerKeyCodes.ArrowRight ? tokenStore.index + 1 : tokenStore.index - 1;
+        const isOutOfBounds = event.key === LabelerKeyCodes.ArrowRight ? nextTokenIndex >= selectionStore.tokenCount : nextTokenIndex < 0;
 
         if (isOutOfBounds) {
             return false;
@@ -197,9 +197,9 @@ const tokenRendererSelectionInteractions = <T extends ITokenStore>({
         return true;
     }
 
-    if (event.key === LuisKeyCodes.Home || event.key === LuisKeyCodes.End) {
-        const absoluteIndex = event.key === LuisKeyCodes.Home ? 0 : selectionStore.tokenCount - 1;
-        const firstOrLastTokenInLineIndex = lineStore.tokenRangeIndices[event.key === LuisKeyCodes.Home ? 0 : 1];
+    if (event.key === LabelerKeyCodes.Home || event.key === LabelerKeyCodes.End) {
+        const absoluteIndex = event.key === LabelerKeyCodes.Home ? 0 : selectionStore.tokenCount - 1;
+        const firstOrLastTokenInLineIndex = lineStore.tokenRangeIndices[event.key === LabelerKeyCodes.Home ? 0 : 1];
 
         selectionStore.unHover();
 
@@ -242,23 +242,23 @@ const tokenRendererA11yInteractions = <T extends ITokenStore>({
     event: React.KeyboardEvent;
     a11yStore: LabelerA11yStore;
 }) => {
-    if (event.key === LuisKeyCodes.ArrowRight || event.key === LuisKeyCodes.ArrowLeft) {
-        const direction = event.key === LuisKeyCodes.ArrowRight ? 'next' : 'previous';
+    if (event.key === LabelerKeyCodes.ArrowRight || event.key === LabelerKeyCodes.ArrowLeft) {
+        const direction = event.key === LabelerKeyCodes.ArrowRight ? 'next' : 'previous';
         a11yStore.focusTokenByDirection(direction);
 
         return true;
     }
 
-    if ((event.key === LuisKeyCodes.ArrowUp || event.key === LuisKeyCodes.ArrowDown) && event.ctrlKey) {
-        const direction = event.key === LuisKeyCodes.ArrowDown ? 'next' : 'previous';
+    if ((event.key === LabelerKeyCodes.ArrowUp || event.key === LabelerKeyCodes.ArrowDown) && event.ctrlKey) {
+        const direction = event.key === LabelerKeyCodes.ArrowDown ? 'next' : 'previous';
         a11yStore.focusAnnotationByDirection(direction);
 
         return true;
     }
 
-    if (event.key === LuisKeyCodes.Home || event.key === LuisKeyCodes.End) {
-        const direction = event.key === LuisKeyCodes.Home ? 'first' : 'last';
-        const index = lineStore.tokenRangeIndices[event.key === LuisKeyCodes.Home ? 0 : 1];
+    if (event.key === LabelerKeyCodes.Home || event.key === LabelerKeyCodes.End) {
+        const direction = event.key === LabelerKeyCodes.Home ? 'first' : 'last';
+        const index = lineStore.tokenRangeIndices[event.key === LabelerKeyCodes.Home ? 0 : 1];
 
         if (event.ctrlKey) {
             a11yStore.focusTokenByDirection(direction);
@@ -269,7 +269,7 @@ const tokenRendererA11yInteractions = <T extends ITokenStore>({
         return true;
     }
 
-    if (event.key === LuisKeyCodes.Escape) {
+    if (event.key === LabelerKeyCodes.Escape) {
         a11yStore.focusLineByIndex(lineStore.index);
 
         return true;

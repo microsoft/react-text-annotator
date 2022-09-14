@@ -8,7 +8,7 @@ import { LabelerSelectionStore } from '../../stores/LabelerSelectionStore';
 import { LineStore } from '../../stores/LineStore';
 import { TokenStore } from '../../stores/TokenStore';
 import { AnnotationData, noop, noopUndefined } from '../../types/labelerTypes';
-import { LuisKeyCodes, tokenDataAttribute, tokenIndexDataAttribute } from '../../utils/labelerConstants';
+import { LabelerKeyCodes, tokenDataAttribute, tokenIndexDataAttribute } from '../../utils/labelerConstants';
 import {
     calculateLabelTokenPadding,
     calculateMaxTokenPadding,
@@ -262,18 +262,18 @@ describe('tokenUtils unit tests', () => {
         });
 
         it('should focus correct direction when right or left arrow key is pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.ArrowRight, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.ArrowRight, ...mockEvent });
             expect(mockFocusTokenByDirection).toHaveBeenLastCalledWith('next');
 
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.ArrowLeft, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.ArrowLeft, ...mockEvent });
             expect(mockFocusTokenByDirection).toHaveBeenLastCalledWith('previous');
         });
 
         it('should focus correct first or last token when ctrl, and Home or End key is pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.Home, ctrlKey: true, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.Home, ctrlKey: true, ...mockEvent });
             expect(mockFocusTokenByDirection).toHaveBeenLastCalledWith('first');
 
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.End, ctrlKey: true, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.End, ctrlKey: true, ...mockEvent });
             expect(mockFocusTokenByDirection).toHaveBeenLastCalledWith('last');
         });
 
@@ -281,48 +281,48 @@ describe('tokenUtils unit tests', () => {
             const tokenStore = new TokenStore(0, '7');
             mockAnnotationsPerTokenMap.set(0, [{ name: '7ammo', startToken: 0, endToken: 1, kind: 'label' }]);
 
-            eventListeners(tokenStore).onKeyDown(<any>{ key: LuisKeyCodes.ArrowDown, ctrlKey: true, ...mockEvent });
+            eventListeners(tokenStore).onKeyDown(<any>{ key: LabelerKeyCodes.ArrowDown, ctrlKey: true, ...mockEvent });
             expect(mockFocusAnnotationByDirection).toHaveBeenLastCalledWith('next');
 
-            eventListeners(tokenStore).onKeyDown(<any>{ key: LuisKeyCodes.ArrowUp, ctrlKey: true, ...mockEvent });
+            eventListeners(tokenStore).onKeyDown(<any>{ key: LabelerKeyCodes.ArrowUp, ctrlKey: true, ...mockEvent });
             expect(mockFocusAnnotationByDirection).toHaveBeenLastCalledWith('previous');
         });
 
         it('should not focus annotation when annotations have a length of zero', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.ArrowDown, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.ArrowDown, ...mockEvent });
             expect(mockFocusAnnotationByDirection).not.toHaveBeenCalled();
 
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.ArrowUp, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.ArrowUp, ...mockEvent });
             expect(mockFocusAnnotationByDirection).not.toHaveBeenCalled();
         });
 
         it('should focus correct first or last token when Home or End key is pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.Home, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.Home, ...mockEvent });
             expect(mockFocusTokenByIndex).toHaveBeenLastCalledWith(0);
 
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.End, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.End, ...mockEvent });
             expect(mockFocusTokenByIndex).toHaveBeenLastCalledWith(2);
         });
 
         it('should focus the line that contains the token when Escape is pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.Escape, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.Escape, ...mockEvent });
             expect(mockFocusLineByIndex).toHaveBeenLastCalledWith(0);
         });
 
         it('should call select with focused token index when token space or Enter is pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.Enter, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.Enter, ...mockEvent });
             expect(mockSelect).toHaveBeenCalledWith(0);
 
             mockSelect.mockClear();
 
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.Space, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.Space, ...mockEvent });
             expect(mockSelect).toHaveBeenCalledWith(0);
         });
 
         it('should not do anything if token selection is out of bounds', () => {
             mockSelectionStore.initialize(1, 1);
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.ArrowRight, ...mockEvent });
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.ArrowLeft, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.ArrowRight, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.ArrowLeft, ...mockEvent });
 
             expect(mockSelect).not.toHaveBeenCalled();
             expect(mockUnHover).not.toHaveBeenCalled();
@@ -330,7 +330,7 @@ describe('tokenUtils unit tests', () => {
 
         it('should select current token index and next current index when right arrow and shift is pressed', () => {
             mockSelectionStore.initialize(1, 5);
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.ArrowRight, shiftKey: true, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.ArrowRight, shiftKey: true, ...mockEvent });
 
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockSelect).toHaveBeenNthCalledWith(1, 0);
@@ -339,21 +339,21 @@ describe('tokenUtils unit tests', () => {
         });
 
         it('should hover current token index when right arrow only is pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.ArrowRight, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.ArrowRight, ...mockEvent });
 
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockHover).toHaveBeenCalled();
         });
 
         it('should select 0 absolute index when Home, Ctrl, and Shift are pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.Home, ctrlKey: true, shiftKey: true, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.Home, ctrlKey: true, shiftKey: true, ...mockEvent });
 
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockSelect).toHaveBeenCalledWith(0);
         });
 
         it('should select first token index in line when Home and Shift are pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.Home, shiftKey: true, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.Home, shiftKey: true, ...mockEvent });
 
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockHover).not.toHaveBeenCalled();
@@ -361,7 +361,7 @@ describe('tokenUtils unit tests', () => {
         });
 
         it('should hover over 0 absolute index when Home and Ctrl are pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.Home, ctrlKey: true, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.Home, ctrlKey: true, ...mockEvent });
 
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockSelect).not.toHaveBeenCalled();
@@ -369,7 +369,7 @@ describe('tokenUtils unit tests', () => {
         });
 
         it('should hover over first token in line when Home is pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.Home, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.Home, ...mockEvent });
 
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockSelect).not.toHaveBeenCalled();
@@ -378,7 +378,7 @@ describe('tokenUtils unit tests', () => {
 
         it('should select absolute end when End, Ctrl, and Shift is pressed', () => {
             mockSelectionStore.initialize(1, 10);
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.End, ctrlKey: true, shiftKey: true, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.End, ctrlKey: true, shiftKey: true, ...mockEvent });
 
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockSelect).toHaveBeenCalledWith(9);
@@ -386,7 +386,7 @@ describe('tokenUtils unit tests', () => {
         });
 
         it('should select line end token when End and Shift is pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.End, shiftKey: true, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.End, shiftKey: true, ...mockEvent });
 
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockSelect).toHaveBeenCalledWith(2);
@@ -394,7 +394,7 @@ describe('tokenUtils unit tests', () => {
         });
 
         it('should hover over absolute end token when End and Ctrl is pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.End, ctrlKey: true, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.End, ctrlKey: true, ...mockEvent });
 
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockSelect).not.toHaveBeenCalled();
@@ -402,7 +402,7 @@ describe('tokenUtils unit tests', () => {
         });
 
         it('should hover over line end token when End is pressed', () => {
-            eventListeners().onKeyDown(<any>{ key: LuisKeyCodes.End, ...mockEvent });
+            eventListeners().onKeyDown(<any>{ key: LabelerKeyCodes.End, ...mockEvent });
 
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockSelect).not.toHaveBeenCalled();

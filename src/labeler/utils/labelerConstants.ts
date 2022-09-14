@@ -55,7 +55,7 @@ export const LABELER_DEFAULT_OVERFLOW = 'auto';
 
 export const nextLineChars = ['\r', '\n'];
 
-export const LuisKeyCodes = {
+export const LabelerKeyCodes = {
     Tab: 'Tab',
     Space: ' ',
     End: 'End',

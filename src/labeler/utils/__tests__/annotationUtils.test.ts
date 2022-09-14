@@ -23,7 +23,7 @@ import {
     annotationEndTokenIndexDataAttribute,
     annotationIndexDataAttribute,
     annotationStartTokenIndexDataAttribute,
-    LuisKeyCodes
+    LabelerKeyCodes
 } from '../../utils/labelerConstants';
 
 describe('annotationUtils unit tests', () => {
@@ -294,34 +294,34 @@ describe('annotationUtils unit tests', () => {
         });
 
         it('should focus annotation by direction correctly when ctrl and Arrow up or down is pressed', () => {
-            onAnnotationKeyDown({ event: { ...mockEvent, key: LuisKeyCodes.ArrowDown, ctrlKey: true } as any, a11yStore: mockA11yStore });
+            onAnnotationKeyDown({ event: { ...mockEvent, key: LabelerKeyCodes.ArrowDown, ctrlKey: true } as any, a11yStore: mockA11yStore });
             expect(mockFocusAnnotationByDirection).toHaveBeenLastCalledWith('next');
 
-            onAnnotationKeyDown({ event: { ...mockEvent, key: LuisKeyCodes.ArrowUp, ctrlKey: true } as any, a11yStore: mockA11yStore });
+            onAnnotationKeyDown({ event: { ...mockEvent, key: LabelerKeyCodes.ArrowUp, ctrlKey: true } as any, a11yStore: mockA11yStore });
             expect(mockFocusAnnotationByDirection).toHaveBeenLastCalledWith('previous');
         });
 
         it('should focus line by direction correctly when Arrow up or down is pressed', () => {
-            onAnnotationKeyDown({ event: { ...mockEvent, key: LuisKeyCodes.ArrowDown } as any, a11yStore: mockA11yStore });
+            onAnnotationKeyDown({ event: { ...mockEvent, key: LabelerKeyCodes.ArrowDown } as any, a11yStore: mockA11yStore });
             expect(mockFocusLineByDirection).toHaveBeenLastCalledWith('next');
 
-            onAnnotationKeyDown({ event: { ...mockEvent, key: LuisKeyCodes.ArrowUp } as any, a11yStore: mockA11yStore });
+            onAnnotationKeyDown({ event: { ...mockEvent, key: LabelerKeyCodes.ArrowUp } as any, a11yStore: mockA11yStore });
             expect(mockFocusLineByDirection).toHaveBeenLastCalledWith('previous');
         });
 
         it('should focus annotation by direction correctly when Home or End is pressed', () => {
-            onAnnotationKeyDown({ event: { ...mockEvent, key: LuisKeyCodes.Home } as any, a11yStore: mockA11yStore });
+            onAnnotationKeyDown({ event: { ...mockEvent, key: LabelerKeyCodes.Home } as any, a11yStore: mockA11yStore });
             expect(mockFocusAnnotationByDirection).toHaveBeenLastCalledWith('first');
 
-            onAnnotationKeyDown({ event: { ...mockEvent, key: LuisKeyCodes.End } as any, a11yStore: mockA11yStore });
+            onAnnotationKeyDown({ event: { ...mockEvent, key: LabelerKeyCodes.End } as any, a11yStore: mockA11yStore });
             expect(mockFocusAnnotationByDirection).toHaveBeenLastCalledWith('last');
         });
 
         it('should focus tokens and blur annotation when right or left is pressed', () => {
-            onAnnotationKeyDown({ event: { ...mockEvent, key: LuisKeyCodes.ArrowRight } as any, a11yStore: mockA11yStore });
+            onAnnotationKeyDown({ event: { ...mockEvent, key: LabelerKeyCodes.ArrowRight } as any, a11yStore: mockA11yStore });
             expect(mockFocusTokenByDirection).toHaveBeenLastCalledWith('next');
 
-            onAnnotationKeyDown({ event: { ...mockEvent, key: LuisKeyCodes.ArrowLeft } as any, a11yStore: mockA11yStore });
+            onAnnotationKeyDown({ event: { ...mockEvent, key: LabelerKeyCodes.ArrowLeft } as any, a11yStore: mockA11yStore });
             expect(mockFocusTokenByDirection).toHaveBeenLastCalledWith('previous');
 
             expect(mockBlurCurrentAnnotation).toHaveBeenCalledTimes(2);
@@ -330,7 +330,7 @@ describe('annotationUtils unit tests', () => {
         it('should focus last focused line when Escape is clicked', () => {
             mockA11yStore.focusedLineIndex = 1;
 
-            onAnnotationKeyDown({ event: { ...mockEvent, key: LuisKeyCodes.Escape } as any, a11yStore: mockA11yStore });
+            onAnnotationKeyDown({ event: { ...mockEvent, key: LabelerKeyCodes.Escape } as any, a11yStore: mockA11yStore });
             expect(mockBlurCurrentAnnotation).toHaveBeenCalled();
             expect(mockFocusLineByIndex).toHaveBeenLastCalledWith(1);
         });

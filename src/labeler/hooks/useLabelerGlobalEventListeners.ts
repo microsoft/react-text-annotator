@@ -6,7 +6,7 @@ import * as React from 'react';
 import { LabelerSelectionStore } from '../stores/LabelerSelectionStore';
 import { GlobalEventExceptionPredicates, TokenToCharMapType } from '../types/labelerTypes';
 import { copyKey, selectAllKey } from '../utils/keyboardUtils';
-import { bracketDataAttribute, LuisKeyCodes, tokenDataAttribute } from '../utils/labelerConstants';
+import { bracketDataAttribute, LabelerKeyCodes, tokenDataAttribute } from '../utils/labelerConstants';
 
 export const useLabelerGlobalEventListeners = ({
     text,
@@ -28,7 +28,7 @@ export const useLabelerGlobalEventListeners = ({
 
         let handled = true;
 
-        if (selectionStore.isSelectionInProgress && e.key === LuisKeyCodes.Escape) {
+        if (selectionStore.isSelectionInProgress && e.key === LabelerKeyCodes.Escape) {
             selectionStore.cancelSelection();
         } else if (selectionStore.isSelectionInProgress && copyKey(e) && navigator.clipboard) {
             await navigator.clipboard.writeText(

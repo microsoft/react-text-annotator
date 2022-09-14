@@ -7,7 +7,7 @@ import { useLabelerGlobalEventListeners } from '../../hooks/useLabelerGlobalEven
 import { LabelerConfigStore } from '../../stores/LabelerConfigStore';
 import { LabelerSelectionStore } from '../../stores/LabelerSelectionStore';
 import { GlobalEventExceptionPredicates, TokenToCharMapType } from '../../types/labelerTypes';
-import { bracketDataAttribute, LuisKeyCodes, tokenDataAttribute } from '../../utils/labelerConstants';
+import { bracketDataAttribute, LabelerKeyCodes, tokenDataAttribute } from '../../utils/labelerConstants';
 
 describe('useLabelerGlobalEventListeners unit tests', () => {
     const id = 'mockId';
@@ -57,14 +57,14 @@ describe('useLabelerGlobalEventListeners unit tests', () => {
         mockSelectionStore.select(10);
 
         wrapper = mount(<MockWrapper selectionStore={mockSelectionStore} />);
-        document.dispatchEvent(new KeyboardEvent('keydown', { key: LuisKeyCodes.Escape }));
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: LabelerKeyCodes.Escape }));
 
         expect(mockCancelSelection).toHaveBeenCalled();
     });
 
     it('should not cancel selection if no selection is in progress and Escape is pressed', () => {
         wrapper = mount(<MockWrapper selectionStore={mockSelectionStore} />);
-        document.dispatchEvent(new KeyboardEvent('keydown', { key: LuisKeyCodes.Escape }));
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: LabelerKeyCodes.Escape }));
 
         expect(mockCancelSelection).not.toHaveBeenCalled();
     });
@@ -187,7 +187,7 @@ describe('useLabelerGlobalEventListeners unit tests', () => {
                 globalEventExceptionSelectors={{ onKeyDown: e => (e.target as HTMLElement).className === 'mockClass' }}
             />
         );
-        container.dispatchEvent(new KeyboardEvent('keydown', { key: LuisKeyCodes.Escape, bubbles: true }));
+        container.dispatchEvent(new KeyboardEvent('keydown', { key: LabelerKeyCodes.Escape, bubbles: true }));
 
         expect(mockCancelSelection).not.toHaveBeenCalled();
     });

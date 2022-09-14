@@ -35,7 +35,7 @@ import {
     LABELER_VERTICAL_PADDING,
     LINE_HEIGHT_CHANGE_DEBOUNCE,
     LINE_VIRTUALIZATION_RENDER_DEBOUNCE,
-    LuisKeyCodes
+    LabelerKeyCodes
 } from '../../utils/labelerConstants';
 import { useLabelerStore } from '../../utils/labelerStoreContext';
 import { getMaxLineWidthAndSvgXOffset, getTargetIndex } from '../../utils/lineUtils';
@@ -85,7 +85,7 @@ const Root = styled.div<{ labelerHeight: string; labelerOverflow: string; isRtl:
  * state of the labeler.
  */
 const onKeyDown = (event: React.KeyboardEvent, a11yStore: LabelerA11yStore) => {
-    if (event.key === LuisKeyCodes.Tab) {
+    if (event.key === LabelerKeyCodes.Tab) {
         a11yStore.blurCurrentToken();
         a11yStore.blurCurrentAnnotation();
     }

@@ -10,7 +10,7 @@ import { TokenStore } from '../../../stores/TokenStore';
 import {
     LINE_HEIGHT_CHANGE_DEBOUNCE,
     LINE_VIRTUALIZATION_RENDER_DEBOUNCE,
-    LuisKeyCodes
+    LabelerKeyCodes
 } from '../../../utils/labelerConstants';
 import { LabelerMockProvider } from '../../../utils/LabelerMockProvider';
 import {
@@ -64,7 +64,7 @@ describe('LayoutController unit tests', () => {
         wrapper
             .find('div')
             .first()
-            .simulate('keydown', { key: LuisKeyCodes.Tab });
+            .simulate('keydown', { key: LabelerKeyCodes.Tab });
 
         expect(mockBlurCurrentToken).toHaveBeenCalled();
         expect(mockBlurCurrentAnnotation).toHaveBeenCalled();

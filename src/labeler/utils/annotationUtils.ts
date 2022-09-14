@@ -10,7 +10,7 @@ import {
     annotationEndTokenIndexDataAttribute,
     annotationIndexDataAttribute,
     annotationStartTokenIndexDataAttribute,
-    LuisKeyCodes
+    LabelerKeyCodes
 } from '../utils/labelerConstants';
 
 export const getAnnotationElementByKey = (ref: HTMLElement, annotationKey: string) =>
@@ -146,8 +146,8 @@ export const annotationDataToAnnotationDomData = <T extends ITokenStore>({
 export const onAnnotationKeyDown = ({ event, a11yStore }: { a11yStore: LabelerA11yStore; event: React.KeyboardEvent }) => {
     let isHandled: boolean = true;
 
-    if (event.key === LuisKeyCodes.ArrowUp || event.key === LuisKeyCodes.ArrowDown) {
-        const direction = event.key === LuisKeyCodes.ArrowDown ? 'next' : 'previous';
+    if (event.key === LabelerKeyCodes.ArrowUp || event.key === LabelerKeyCodes.ArrowDown) {
+        const direction = event.key === LabelerKeyCodes.ArrowDown ? 'next' : 'previous';
 
         if (event.ctrlKey) {
             a11yStore.focusAnnotationByDirection(direction);
@@ -155,14 +155,14 @@ export const onAnnotationKeyDown = ({ event, a11yStore }: { a11yStore: LabelerA1
             a11yStore.blurCurrentAnnotation();
             a11yStore.focusLineByDirection(direction);
         }
-    } else if (event.key === LuisKeyCodes.Home || event.key === LuisKeyCodes.End) {
-        const direction = event.key === LuisKeyCodes.Home ? 'first' : 'last';
+    } else if (event.key === LabelerKeyCodes.Home || event.key === LabelerKeyCodes.End) {
+        const direction = event.key === LabelerKeyCodes.Home ? 'first' : 'last';
         a11yStore.focusAnnotationByDirection(direction);
-    } else if (event.key === LuisKeyCodes.ArrowRight || event.key === LuisKeyCodes.ArrowLeft) {
-        const direction = event.key === LuisKeyCodes.ArrowRight ? 'next' : 'previous';
+    } else if (event.key === LabelerKeyCodes.ArrowRight || event.key === LabelerKeyCodes.ArrowLeft) {
+        const direction = event.key === LabelerKeyCodes.ArrowRight ? 'next' : 'previous';
         a11yStore.blurCurrentAnnotation();
         a11yStore.focusTokenByDirection(direction);
-    } else if (event.key === LuisKeyCodes.Escape) {
+    } else if (event.key === LabelerKeyCodes.Escape) {
         a11yStore.blurCurrentAnnotation();
         a11yStore.focusLineByIndex(a11yStore.focusedLineIndex);
     } else {

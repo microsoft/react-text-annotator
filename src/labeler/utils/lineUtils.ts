@@ -12,7 +12,7 @@ import {
     LABELER_HORIZONTAL_PADDING,
     lineDataAttribute,
     lineIndexDataAttribute,
-    LuisKeyCodes,
+    LabelerKeyCodes,
     nextLineChars
 } from '../utils/labelerConstants';
 import { isCharacterCjk } from '../utils/languageUtils';
@@ -232,8 +232,8 @@ const lineRendererSelectionInteractions = <T extends ITokenStore>({
     event: React.KeyboardEvent;
     selectionStore: LabelerSelectionStore;
 }): boolean => {
-    if (event.key === LuisKeyCodes.ArrowRight || event.key === LuisKeyCodes.ArrowLeft) {
-        const tokenIndex = lineStore.tokenRangeIndices[event.key === LuisKeyCodes.ArrowRight ? 0 : 1];
+    if (event.key === LabelerKeyCodes.ArrowRight || event.key === LabelerKeyCodes.ArrowLeft) {
+        const tokenIndex = lineStore.tokenRangeIndices[event.key === LabelerKeyCodes.ArrowRight ? 0 : 1];
 
         selectionStore.unHover();
 
@@ -270,8 +270,8 @@ const lineRendererA11yInteractions = <T extends ITokenStore>({
     a11yStore: LabelerA11yStore;
     targetIndex?: TargetIndex;
 }): boolean => {
-    if (event.key === LuisKeyCodes.ArrowUp || event.key === LuisKeyCodes.ArrowDown) {
-        const direction = event.key === LuisKeyCodes.ArrowDown ? 'next' : 'previous';
+    if (event.key === LabelerKeyCodes.ArrowUp || event.key === LabelerKeyCodes.ArrowDown) {
+        const direction = event.key === LabelerKeyCodes.ArrowDown ? 'next' : 'previous';
         if (targetIndex) {
             a11yStore.focusLineByDirection(direction, undefined, targetIndex);
         } else {
@@ -281,15 +281,15 @@ const lineRendererA11yInteractions = <T extends ITokenStore>({
         return true;
     }
 
-    if (event.key === LuisKeyCodes.ArrowRight || event.key === LuisKeyCodes.ArrowLeft) {
-        const firstOrLastTokenIndex = lineStore.tokenRangeIndices[event.key === LuisKeyCodes.ArrowRight ? 0 : 1];
+    if (event.key === LabelerKeyCodes.ArrowRight || event.key === LabelerKeyCodes.ArrowLeft) {
+        const firstOrLastTokenIndex = lineStore.tokenRangeIndices[event.key === LabelerKeyCodes.ArrowRight ? 0 : 1];
         a11yStore.focusTokenByIndex(firstOrLastTokenIndex);
 
         return true;
     }
 
-    if (event.key === LuisKeyCodes.Home || event.key === LuisKeyCodes.End) {
-        const direction = event.key === LuisKeyCodes.Home ? 'first' : 'last';
+    if (event.key === LabelerKeyCodes.Home || event.key === LabelerKeyCodes.End) {
+        const direction = event.key === LabelerKeyCodes.Home ? 'first' : 'last';
 
         a11yStore.focusLineByDirection(direction);
 

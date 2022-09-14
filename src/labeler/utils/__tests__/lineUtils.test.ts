@@ -8,7 +8,7 @@ import { LabelerSelectionStore } from '../../stores/LabelerSelectionStore';
 import { LineStore } from '../../stores/LineStore';
 import { TokenStore } from '../../stores/TokenStore';
 import { noop } from '../../types/labelerTypes';
-import { lineDataAttribute, lineIndexDataAttribute, LuisKeyCodes } from '../../utils/labelerConstants';
+import { lineDataAttribute, lineIndexDataAttribute, LabelerKeyCodes } from '../../utils/labelerConstants';
 import {
     getCharAndTokenMapping,
     getLineElementByIndex,
@@ -290,7 +290,7 @@ describe('lineUtils unit tests', () => {
 
             onLineRendererKeyDown({
                 ...mockParams,
-                event: <any>{ key: LuisKeyCodes.ArrowRight, stopPropagation: mockStopPropagation, preventDefault: mockPreventDefault }
+                event: <any>{ key: LabelerKeyCodes.ArrowRight, stopPropagation: mockStopPropagation, preventDefault: mockPreventDefault }
             });
 
             expect(mockPreventDefault).toHaveBeenCalled();
@@ -298,48 +298,48 @@ describe('lineUtils unit tests', () => {
         });
 
         it('should focus line by correct direction when up or down arrow is pressed', () => {
-            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LuisKeyCodes.ArrowDown, ...mockEvents } });
+            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LabelerKeyCodes.ArrowDown, ...mockEvents } });
             expect(mockFocusLineByDirection).toHaveBeenLastCalledWith('next');
 
-            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LuisKeyCodes.ArrowUp, ...mockEvents } });
+            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LabelerKeyCodes.ArrowUp, ...mockEvents } });
             expect(mockFocusLineByDirection).toHaveBeenLastCalledWith('previous');
         });
 
         it('should focus first or last token in line right or left arrow is pressed', () => {
-            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LuisKeyCodes.ArrowRight, ...mockEvents } });
+            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LabelerKeyCodes.ArrowRight, ...mockEvents } });
             expect(mockFocusTokenByIndex).toHaveBeenLastCalledWith(0);
 
-            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LuisKeyCodes.ArrowLeft, ...mockEvents } });
+            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LabelerKeyCodes.ArrowLeft, ...mockEvents } });
             expect(mockFocusTokenByIndex).toHaveBeenLastCalledWith(2);
         });
 
         it('should focus correct line when home or end key is pressed', () => {
-            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LuisKeyCodes.Home, ...mockEvents } });
+            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LabelerKeyCodes.Home, ...mockEvents } });
             expect(mockFocusLineByDirection).toHaveBeenLastCalledWith('first');
 
-            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LuisKeyCodes.End, ...mockEvents } });
+            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LabelerKeyCodes.End, ...mockEvents } });
             expect(mockFocusLineByDirection).toHaveBeenLastCalledWith('last');
         });
 
         it('should select first or last token if shift key is pressed and right or left arrow is pressed', () => {
-            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LuisKeyCodes.ArrowRight, shiftKey: true, ...mockEvents } });
+            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LabelerKeyCodes.ArrowRight, shiftKey: true, ...mockEvents } });
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockSelect).toHaveBeenCalledWith(0);
 
             mockUnHover.mockClear();
 
-            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LuisKeyCodes.ArrowLeft, shiftKey: true, ...mockEvents } });
+            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LabelerKeyCodes.ArrowLeft, shiftKey: true, ...mockEvents } });
             expect(mockSelect).toHaveBeenCalledWith(2);
         });
 
         it('should hover first or last token if right or left arrow is pressed and shift is not pressed', () => {
-            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LuisKeyCodes.ArrowRight, ...mockEvents } });
+            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LabelerKeyCodes.ArrowRight, ...mockEvents } });
             expect(mockUnHover).toHaveBeenCalled();
             expect(mockHover).toHaveBeenLastCalledWith(0);
 
             mockUnHover.mockClear();
 
-            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LuisKeyCodes.ArrowLeft, shiftKey: true, ...mockEvents } });
+            onLineRendererKeyDown({ ...mockParams, event: <any>{ key: LabelerKeyCodes.ArrowLeft, shiftKey: true, ...mockEvents } });
             expect(mockSelect).toHaveBeenCalledWith(2);
         });
     });

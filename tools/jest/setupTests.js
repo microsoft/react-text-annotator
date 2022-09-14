@@ -6,7 +6,6 @@ const enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 const { initializeIcons } = require('@fluentui/react');
 const crypto = require('crypto');
-const luisAppSettings = require('../helpers/luisAppSettings');
 
 enzyme.configure({ adapter: new Adapter() });
 initializeIcons();
@@ -77,6 +76,3 @@ window.location.replace = jest.fn();
  * Mock WcpConsent namespace
  */
 global.WcpConsent = { init: jest.fn() };
-
-window.luisAppSettings = luisAppSettings.getLuisAppSettings();
-window.resetMockLuisAppSettings = () => (window.luisAppSettings = Object.assign({}, luisAppSettings.getLuisAppSettings()));
