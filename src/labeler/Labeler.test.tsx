@@ -5,7 +5,7 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
 import { act } from 'react-dom/test-utils';
-import { Labeler } from '../index';
+import { Labeler } from './Labeler';
 import { LabelerA11yStore } from './stores/LabelerA11yStore';
 import { LabelerAnnotationsStore } from './stores/LabelerAnnotationsStore';
 import { LabelerConfigStore } from './stores/LabelerConfigStore';

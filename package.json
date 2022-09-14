@@ -4,10 +4,16 @@
     "type": "git",
     "url": "https://github.com/microsoft/react-text-annotator.git"
   },
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
   "author": "Mohamed AboBakr <moabobakr@microsoft.com>",
   "license": "MIT",
   "version": "1.0.0",
   "private": false,
+  "files": [
+    "/lib"
+  ],
   "dependencies": {
     "@fluentui/react": "^8.56.1",
     "@types/enzyme": "^3.9.3",
@@ -46,28 +52,10 @@
     "@types/react": "16.9.17"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "test": "cross-env NODE_OPTIONS=--unhandled-rejections=strict jest --maxWorkers=50%"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "jest": {
     "testEnvironment": "jsdom",
@@ -104,7 +92,7 @@
     },
     "testRegex": "(/.*(\\.|/)(test|spec))\\.[jt]sx?$",
     "testPathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/", "/lib/"
     ]
   }
 }
