@@ -9,7 +9,7 @@
   "types": "./lib/esm/index.d.ts",
   "author": "Mohamed AboBakr <moabobakr@microsoft.com>",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "files": [
     "/lib"
@@ -22,8 +22,8 @@
     "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.range": "^3.2.6",
     "@types/node": "^16.11.56",
-    "@types/react": "16.9.17",
-    "@types/react-dom": "16.9.4",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
     "@types/styled-components": "5.1.15",
     "cross-env": "^5.2.0",
     "entities": "^4.3.1",
@@ -40,8 +40,8 @@
     "lodash.range": "^3.2.0",
     "mobx": "^5.13.0",
     "mobx-react": "^6.1.1",
-    "react": "16.12.0",
-    "react-dom": "16.8.6",
+    "react": "^16.12.0",
+    "react-dom": "^16.8.6",
     "styled-components": "5.3.3",
     "ts-jest": "^27.0.7",
     "tslib": "^2.3.1",
@@ -49,7 +49,7 @@
     "use-deep-compare-effect": "^1.8.1"
   },
   "resolutions": {
-    "@types/react": "16.9.17"
+    "@types/react": "^16.9.17"
   },
   "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
