@@ -4,6 +4,7 @@
 
 import { observer } from 'mobx-react';
 import * as React from 'react';
+import { RTL_ANNOTATION_X_OFFSET } from '../../utils/labelerConstants';
 import { SvgRootRenderer } from '../../components/svgRenderers/SvgRootRenderer';
 import { LineStore } from '../../stores/LineStore';
 import {
@@ -74,7 +75,15 @@ export const SvgLayoutController = observer(<T extends ITokenStore>(props: SvgCo
                     annotationsPerTokenMap: annotationStore.annotationsPerTokenMap,
                     containerCoordinates: containerRef.current.getBoundingClientRect(),
                     scrollOffset: {
-                        x: containerRef.current.scrollLeft - (configStore.isRtl ? labelerStore.svgLayerXOffset : 0),
+                         x:
+                            containerRef.current.scrollLeft -
+                            (configStore.isRtl
+                                ? !configStore.enableVirtualization
+                                    ? labelerStore.svgLayerXOffset
+                                    : containerRef.current.scrollHeight > containerRef.current.clientHeight
+                                    ? labelerStore.svgLayerXOffset - RTL_ANNOTATION_X_OFFSET
+                                    : 0
+                                : 0),
                         y: containerRef.current.scrollTop
                     },
                     getTokenElementByIndex: index => getNewLabelerTokenElementByIndex(containerRef.current, index)
