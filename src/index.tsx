@@ -8,7 +8,7 @@ export type {LabelerRef} from './labeler/Labeler';
 
 export type {LabelerProps} from './labeler/types/labelerProps';
 
-export type { BaseTokenStore } from './labeler/stores/BasTokenStore';
+export type { BaseTokenStore } from './labeler/stores/BaseTokenStore';
 
 export type { lineDataAttribute } from './labeler/utils/labelerConstants'
  
