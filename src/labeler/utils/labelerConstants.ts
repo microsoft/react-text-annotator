@@ -49,6 +49,7 @@ export const NAME_FONT_SIZE = 10;
 export const BRACKET_OFFSET = -4;
 export const TOOLTIP_MAX_WIDTH = 300;
 export const TOOLTIP_MAX_HEIGHT = 300;
+export const RTL_ANNOTATION_X_OFFSET = 4;
 
 export const LABELER_DEFAULT_HEIGHT = '100%';
 export const LABELER_DEFAULT_OVERFLOW = 'auto';
