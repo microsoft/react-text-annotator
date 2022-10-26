@@ -9,7 +9,7 @@
   "types": "./lib/esm/index.d.ts",
   "author": "Mohamed AboBakr <moabobakr@microsoft.com>",
   "license": "MIT",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "files": [
     "/lib"
