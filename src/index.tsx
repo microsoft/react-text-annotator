@@ -8,9 +8,9 @@ export type {LabelerRef} from './labeler/Labeler';
 
 export type {LabelerProps} from './labeler/types/labelerProps';
 
-export type { BaseTokenStore } from './labeler/stores/BaseTokenStore';
+export { BaseTokenStore } from './labeler/stores/BaseTokenStore';
 
-export type { lineDataAttribute } from './labeler/utils/labelerConstants'
+export { lineDataAttribute } from './labeler/utils/labelerConstants'
  
 export type { ISvgRenderer, ITokenStore, AnnotationData,
     LineHeightCalculator, TokenPaddingCalculator, SvgRendererKind,
