@@ -128,4 +128,18 @@ describe('Labeler unit tests', () => {
             expect(onAnnotationResize).toBeCalled();
         });
     });
+
+    it('should neglect labels with length zero correctly', () => {
+        const mockAnnotations = [
+            { id: 'annotation_1', name: '7ammoStart', kind: 'label', startToken: 0, endToken: 2 },
+            { id: 'annotation_2', name: '7ammoStart', kind: 'label', startToken: 2, endToken: 2 }
+        ];
+        const wrapper = mount(<Labeler text="7ammo" annotations={mockAnnotations} />);
+        wrapper.update();
+
+        const reversedAnnotations: AnnotationData[] = annotationStore.annotations;
+
+        expect(reversedAnnotations.length).toBe(1);
+        expect(reversedAnnotations[0].id).toBe('annotation_1');
+    });
 });
