@@ -115,7 +115,6 @@
              }
  
              const processedAnnotations = annotations
-                 .filter(annotation => Math.abs(annotation?.endToken - annotation?.startToken) > 0)
                  .map(reverseAnnotation)
                  .map(a => ({
                      ...a,
