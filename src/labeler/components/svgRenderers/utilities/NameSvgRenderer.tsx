@@ -5,7 +5,7 @@
 import { observer } from 'mobx-react';
 import React from 'react';
 import { Point, Position } from '../../../types/labelerTypes';
-import { NAME_FONT_SIZE } from '../../../utils/labelerConstants';
+import { NAME_HEIGHT, NAME_FONT_SIZE } from '../../../utils/labelerConstants';
 import styled from 'styled-components';
 
 export type NameSvgRendererProps = {
@@ -27,7 +27,7 @@ const Name = styled.span<{ isRtl: boolean }>(props => ({
     pointerEvents: 'all',
     display: 'inline-block',
     textOverflow: 'ellipsis',
-    height: `${NAME_FONT_SIZE + 1}px`,
+    height: `${NAME_HEIGHT}px`,
     direction: props.isRtl ? 'rtl' : 'ltr',
     '&:hover': { overflow: 'visible' }
 }));
@@ -35,9 +35,9 @@ const Name = styled.span<{ isRtl: boolean }>(props => ({
 const NameContainer = styled.span({
     display: 'flex',
     alignItems: 'center',
-    height: NAME_FONT_SIZE,
+    height: NAME_HEIGHT,
     fontSize: NAME_FONT_SIZE,
-    lineHeight: `${NAME_FONT_SIZE}px`
+    lineHeight: `${NAME_HEIGHT}px`
 });
 
 const Root = styled.foreignObject<{ isClickable: boolean }>(({ isClickable }) => ({
@@ -92,8 +92,8 @@ export const NameSvgRenderer = observer((props: NameSvgRendererProps) => {
 
     return (
         <Root
-            height={10}
             width={width}
+            height={NAME_HEIGHT}
             ref={foreignObjectRef}
             data-automation-id="nameRoot"
             isClickable={Boolean(onClick)}
