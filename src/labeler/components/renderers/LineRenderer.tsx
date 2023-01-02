@@ -19,8 +19,10 @@ import {
     lineDataAttribute,
     lineIndexDataAttribute,
     TOKEN_CLASS_NAME,
+    TOKEN_DEFAULT_BOTTOM_PADDING_OFFSET,
     TOKEN_DEFAULT_HEIGHT,
     TOKEN_DEFAULT_PADDING,
+    TOKEN_DEFAULT_TOP_PADDING_OFFSET,
     TOKEN_Z_INDEX
 } from '../../utils/labelerConstants';
 import { useLabelerStore } from '../../utils/labelerStoreContext';
@@ -103,7 +105,10 @@ export const LineRenderer = observer(<T extends ITokenStore>(props: LineRenderer
                 annotationStore.annotationsPerTokenMap
             );
 
-            return [tokenPaddingTop || TOKEN_DEFAULT_PADDING, tokenPaddingBottom || TOKEN_DEFAULT_PADDING];
+            return [
+                (tokenPaddingTop || TOKEN_DEFAULT_PADDING) + TOKEN_DEFAULT_TOP_PADDING_OFFSET,
+                (tokenPaddingBottom || TOKEN_DEFAULT_PADDING) + TOKEN_DEFAULT_BOTTOM_PADDING_OFFSET
+            ];
         },
         { equals: comparer.shallow }
     ).get();

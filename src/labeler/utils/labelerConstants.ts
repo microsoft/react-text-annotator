@@ -33,10 +33,12 @@ export const TOKEN_Z_INDEX = 1;
 export const TOKEN_DEFAULT_HEIGHT = 17;
 export const TOKEN_DEFAULT_PADDING = 6;
 export const TOKEN_CLASS_NAME = 'inner-token';
+export const TOKEN_DEFAULT_TOP_PADDING_OFFSET = 4;
+export const TOKEN_DEFAULT_BOTTOM_PADDING_OFFSET = 12;
 
 export const RELATION_STROKE_WIDTH = 2;
 export const RELATION_NAME_Y_OFFSET = 16;
-export const TOKEN_RELATION_PADDING = 18;
+export const TOKEN_RELATION_PADDING = 22;
 
 export const PREDICTION_STROKE_WIDTH = 1;
 export const PREDICTION_NAME_Y_OFFSET = 10;
