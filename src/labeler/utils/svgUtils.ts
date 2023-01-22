@@ -86,10 +86,12 @@ export const labelAnnotationToSvgPropsFactory: ISvgRendererPropsFactory = ({
     };
 
     for (const iThLine of data.lineSegments) {
-        const ithLineFirstTokenRect = getTokenElementByIndex(iThLine.startToken).getBoundingClientRect();
-        const ithLineLastTokenRect = getTokenElementByIndex(iThLine.endToken).getBoundingClientRect();
+        const ithLineFirstTokenRect = getTokenElementByIndex(iThLine.startToken)?.getBoundingClientRect();
+        const ithLineLastTokenRect = getTokenElementByIndex(iThLine.endToken)?.getBoundingClientRect();
 
-        linePoints.push(getLinePointsForRects(ithLineFirstTokenRect, ithLineLastTokenRect));
+        if (ithLineFirstTokenRect && ithLineLastTokenRect) {
+            linePoints.push(getLinePointsForRects(ithLineFirstTokenRect, ithLineLastTokenRect));
+        }
     }
 
     return toSvgRenderProps('underline', isRtl, data, linePoints, data.kind === 'negativeLabel' ? 'dashed' : 'solid');
@@ -171,33 +173,35 @@ export const relationAnnotationToSvgPropsFactory: ISvgRendererPropsFactory = ({
 
     const firstLineSegment = data.lineSegments[0];
     const firstLineStore = lineStores[firstLineSegment.lineIndex];
-    const firstTokenRect = getTokenElementByIndex(firstLineSegment.startToken).getBoundingClientRect();
+    const firstTokenRect = getTokenElementByIndex(firstLineSegment.startToken)?.getBoundingClientRect();
     const firstLineLevelOffset = getRelationLevel(data, firstLineStore, annotationsPerTokenMap) * TOKEN_RELATION_PADDING;
 
     const lastLineSegment = data.lineSegments[data.lineSegments.length - 1];
     const lastLineStore = lineStores[lastLineSegment.lineIndex];
 
     if (data.lineSegments.length === 1) {
-        const endTokenRect = getTokenElementByIndex(firstLineSegment.endToken).getBoundingClientRect();
+        const endTokenRect = getTokenElementByIndex(firstLineSegment.endToken)?.getBoundingClientRect();
 
-        linePoints.push(
-            [
-                { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y },
-                { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset }
-            ],
-            [
-                { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset },
-                { x: endTokenRect.left + containerOffset.x, y: endTokenRect.top + containerOffset.y - firstLineLevelOffset }
-            ],
-            [
-                { x: endTokenRect.left + containerOffset.x, y: endTokenRect.top + containerOffset.y - firstLineLevelOffset },
-                { x: endTokenRect.left + containerOffset.x, y: endTokenRect.top + containerOffset.y }
-            ]
-        );
+        if (firstTokenRect && endTokenRect) {
+            linePoints.push(
+                [
+                    { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y },
+                    { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset }
+                ],
+                [
+                    { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset },
+                    { x: endTokenRect.left + containerOffset.x, y: endTokenRect.top + containerOffset.y - firstLineLevelOffset }
+                ],
+                [
+                    { x: endTokenRect.left + containerOffset.x, y: endTokenRect.top + containerOffset.y - firstLineLevelOffset },
+                    { x: endTokenRect.left + containerOffset.x, y: endTokenRect.top + containerOffset.y }
+                ]
+            );
+        }
     } else {
-        const firstTokenInFirstLineRect = getTokenElementByIndex(firstLineStore.tokenRangeIndices[0]).getBoundingClientRect();
-        const lastTokenInFirstLineRect = getTokenElementByIndex(firstLineStore.tokenRangeIndices[1]).getBoundingClientRect();
-        const lastTokenInLastLineRect = getTokenElementByIndex(lastLineSegment.endToken).getBoundingClientRect();
+        const firstTokenInFirstLineRect = getTokenElementByIndex(firstLineStore.tokenRangeIndices[0])?.getBoundingClientRect();
+        const lastTokenInFirstLineRect = getTokenElementByIndex(firstLineStore.tokenRangeIndices[1])?.getBoundingClientRect();
+        const lastTokenInLastLineRect = getTokenElementByIndex(lastLineSegment.endToken)?.getBoundingClientRect();
 
         const lastLineLevelOffset = getRelationLevel(data, lastLineStore, annotationsPerTokenMap) * TOKEN_RELATION_PADDING;
 
@@ -212,37 +216,39 @@ export const relationAnnotationToSvgPropsFactory: ISvgRendererPropsFactory = ({
         const directionToDraw = totalDistanceLeft < totalDistanceRight ? 'left' : 'right';
         const directionalX =
             directionToDraw === 'left'
-                ? firstTokenInFirstLineRect.left + containerOffset.x - LABELER_HORIZONTAL_PADDING / 2
-                : lastTokenInFirstLineRect.right + containerOffset.x + LABELER_HORIZONTAL_PADDING / 2;
+                ? firstTokenInFirstLineRect?.left ?? 0 + containerOffset.x - LABELER_HORIZONTAL_PADDING / 2
+                : lastTokenInFirstLineRect?.right ?? 0 + containerOffset.x + LABELER_HORIZONTAL_PADDING / 2;
 
-        linePoints.push(
-            [
-                { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y },
-                { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset }
-            ],
-            [
-                { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset },
-                { x: directionalX, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset }
-            ],
-            [
-                { x: directionalX, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset },
-                { x: directionalX, y: lastTokenInLastLineRect.top + containerOffset.y - lastLineLevelOffset }
-            ],
-            [
-                { x: directionalX, y: lastTokenInLastLineRect.top + containerOffset.y - lastLineLevelOffset },
-                {
-                    x: lastTokenInLastLineRect.left + containerOffset.x,
-                    y: lastTokenInLastLineRect.top + containerOffset.y - lastLineLevelOffset
-                }
-            ],
-            [
-                {
-                    x: lastTokenInLastLineRect.left + containerOffset.x,
-                    y: lastTokenInLastLineRect.top + containerOffset.y - lastLineLevelOffset
-                },
-                { x: lastTokenInLastLineRect.left + containerOffset.x, y: lastTokenInLastLineRect.top + containerOffset.y }
-            ]
-        );
+        if (firstTokenInFirstLineRect && lastTokenInFirstLineRect && lastTokenInLastLineRect) {
+            linePoints.push(
+                [
+                    { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y },
+                    { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset }
+                ],
+                [
+                    { x: firstTokenRect.left + containerOffset.x, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset },
+                    { x: directionalX, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset }
+                ],
+                [
+                    { x: directionalX, y: firstTokenRect.top + containerOffset.y - firstLineLevelOffset },
+                    { x: directionalX, y: lastTokenInLastLineRect.top + containerOffset.y - lastLineLevelOffset }
+                ],
+                [
+                    { x: directionalX, y: lastTokenInLastLineRect.top + containerOffset.y - lastLineLevelOffset },
+                    {
+                        x: lastTokenInLastLineRect.left + containerOffset.x,
+                        y: lastTokenInLastLineRect.top + containerOffset.y - lastLineLevelOffset
+                    }
+                ],
+                [
+                    {
+                        x: lastTokenInLastLineRect.left + containerOffset.x,
+                        y: lastTokenInLastLineRect.top + containerOffset.y - lastLineLevelOffset
+                    },
+                    { x: lastTokenInLastLineRect.left + containerOffset.x, y: lastTokenInLastLineRect.top + containerOffset.y }
+                ]
+            );
+        }
     }
 
     return toSvgRenderProps('relation', isRtl, data, linePoints);
@@ -272,28 +278,28 @@ export const predictionAnnotationToSvgPropsFactory: ISvgRendererPropsFactory = (
     const containerOffset: Point = { x: scrollOffset.x - containerCoordinates.x, y: scrollOffset.y - containerCoordinates.y };
 
     const getHorizontalLinePointsForLineSegment = (line: AnnotationDomLineData): [Point, Point][] => {
-        const startRect = getTokenElementByIndex(line.startToken).getBoundingClientRect();
-        const endRect = getTokenElementByIndex(line.endToken).getBoundingClientRect();
+        const startRect = getTokenElementByIndex(line.startToken)?.getBoundingClientRect();
+        const endRect = getTokenElementByIndex(line.endToken)?.getBoundingClientRect();
 
         return [
             [
                 {
-                    x: startRect.left + containerOffset.x,
-                    y: startRect.top + containerOffset.y - predictionLevel
+                    x: startRect?.left ?? 0 + containerOffset.x,
+                    y: startRect?.top ?? 0 + containerOffset.y - predictionLevel
                 },
                 {
-                    x: endRect.right + containerOffset.x,
-                    y: endRect.top + containerOffset.y - predictionLevel
+                    x: endRect?.right ?? 0 + containerOffset.x,
+                    y: endRect?.top ?? 0 + containerOffset.y - predictionLevel
                 }
             ],
             [
                 {
-                    x: startRect.left + containerOffset.x,
-                    y: startRect.bottom + containerOffset.y + predictionLevel
+                    x: startRect?.left ?? 0 + containerOffset.x,
+                    y: startRect?.bottom ?? 0 + containerOffset.y + predictionLevel
                 },
                 {
-                    x: endRect.right + containerOffset.x,
-                    y: endRect.bottom + containerOffset.y + predictionLevel
+                    x: endRect?.right ?? 0 + containerOffset.x,
+                    y: endRect?.bottom ?? 0 + containerOffset.y + predictionLevel
                 }
             ]
         ];
