@@ -76,7 +76,8 @@ describe('LineRenderer unit tests', () => {
 
         const wrapper = mount(<Wrapper lineStore={mockLineStore} />);
 
-        expect(getRootStylesObject(wrapper)).toEqual(expect.objectContaining({ paddingTop: '6px', paddingBottom: '6px' }));
+        expect(getRootStylesObject(wrapper).paddingTop).toEqual('10px');
+        expect(getRootStylesObject(wrapper).paddingBottom).toEqual('18px');
     });
 
     it('should pass correct padding values to the real line when exist', () => {
@@ -86,7 +87,8 @@ describe('LineRenderer unit tests', () => {
 
         const wrapper = mount(<Wrapper lineStore={mockLineStore} tokenPaddingCalculators={[calculateLabelTokenPadding]} />);
 
-        expect(getRootStylesObject(wrapper)).toEqual(expect.objectContaining({ paddingTop: '6px', paddingBottom: '20px' }));
+        expect(getRootStylesObject(wrapper).paddingTop).toEqual('10px');
+        expect(getRootStylesObject(wrapper).paddingBottom).toEqual('32px');
     });
 
     it('should call onRendered when the line is rendered', () => {
@@ -106,7 +108,7 @@ describe('LineRenderer unit tests', () => {
         const wrapper = mount(<Wrapper lineStore={mockLineStore} onHeightChange={mockOnHeightChange} />);
         wrapper.update();
 
-        expect(mockOnHeightChange).toHaveBeenCalledWith(1, 29);
+        expect(mockOnHeightChange).toHaveBeenCalledWith(1, 45);
     });
 
     it('should call onHeightChange when the token padding changes', () => {
@@ -151,7 +153,7 @@ describe('LineRenderer unit tests', () => {
         const lineWrapper = wrapper.find('[data-automation-id="lineWrapper"]').first();
 
         expect(lineWrapper.exists()).toBeFalsy();
-        expect(getRootStylesObject(wrapper)).toEqual(expect.objectContaining({ minHeight: '29px' }));
+        expect(getRootStylesObject(wrapper).minHeight).toEqual('45px');
     });
 
     it('should render real line if virtualization is enabled but line is within virtualization boundaries', () => {

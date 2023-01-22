@@ -104,7 +104,7 @@ describe('tokenUtils unit tests', () => {
                     getMockAnnotation('annotation_1', 0, 1, 'relation'),
                     getMockAnnotation('annotation_2', 2, 3, 'relation')
                 ])
-            ).toEqual([48, 0]);
+            ).toEqual([66, 0]);
         });
 
         it('should get no padding when there are no relations', () => {
@@ -124,7 +124,7 @@ describe('tokenUtils unit tests', () => {
                     getMockAnnotation('annotation_1', 0, 1),
                     getMockAnnotation('annotation_2', 2, 3, 'relation')
                 ])
-            ).toEqual([30, 0]);
+            ).toEqual([42, 0]);
         });
     });
 
