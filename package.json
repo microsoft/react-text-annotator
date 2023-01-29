@@ -14,7 +14,12 @@
   "files": [
     "/lib"
   ],
-  "keywords": ["labeler", "text-annotator", "visualization", "svg"],
+  "keywords": [
+    "labeler",
+    "text-annotator",
+    "visualization",
+    "svg"
+  ],
   "dependencies": {
     "@fluentui/react": "^8.56.1",
     "@types/enzyme": "^3.9.3",
@@ -92,7 +97,11 @@
     },
     "testRegex": "(/.*(\\.|/)(test|spec))\\.[jt]sx?$",
     "testPathIgnorePatterns": [
-      "/node_modules/", "/lib/"
+      "/node_modules/",
+      "/lib/"
     ]
+  },
+  "devDependencies": {
+    "jest-environment-jsdom": "^29.4.1"
   }
 }

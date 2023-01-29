@@ -47,11 +47,11 @@ describe('useLabelerGlobalEventListeners unit tests', () => {
         mockSelectAll = jest.spyOn(mockSelectionStore, 'selectAll');
         mockCancelSelection = jest.spyOn(mockSelectionStore, 'cancelSelection');
 
-        jest.clearAllMocks();
-        jest.resetAllMocks();
+      
     });
 
-    afterEach(() => wrapper.unmount());
+    afterEach(() =>{  jest.clearAllMocks();
+        jest.resetAllMocks(); wrapper.unmount()});
 
     it('should cancel selection if selection is in progress and Escape is pressed', () => {
         mockSelectionStore.select(10);
