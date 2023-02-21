@@ -108,6 +108,7 @@ export type AnnotationData = {
      */
     isReversed?: boolean;
     kind: AnnotationKind;
+    dashesLength?: string;
     'aria-label'?: string;
     isClickable?: boolean;
     isResizingEnabled?: boolean;

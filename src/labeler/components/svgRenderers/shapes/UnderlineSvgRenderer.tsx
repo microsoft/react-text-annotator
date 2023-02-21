@@ -12,12 +12,13 @@ import { RESIZE_HANDLE_X_OFFSET, UNDERLINE_NAME_Y_OFFSET, UNDERLINE_STROKE_WIDTH
 import { useLabelerStore } from '../../../utils/labelerStoreContext';
 
 export type UnderlineSvgRendererProps = ISvgRendererProps & {
+    strokeDashedArray?: string;
     namePosition?: Position;
     strokeStyle?: 'solid' | 'dashed';
 };
 
 export const UnderlineSvgRenderer: ISvgRenderer = observer((props: UnderlineSvgRendererProps) => {
-    const { name, onRenderName, isResizingEnabled, color, namePosition = 'start', linePoints, strokeStyle = 'solid', onResize } = props;
+    const { name, onRenderName, isResizingEnabled, color, namePosition = 'start', linePoints, strokeStyle = 'solid', strokeDashedArray = '2,2', onResize } = props;
     const { configStore } = useLabelerStore();
 
     const [firstPoint, secondPoint] = linePoints[0];
@@ -43,7 +44,7 @@ export const UnderlineSvgRenderer: ISvgRenderer = observer((props: UnderlineSvgR
                 strokeLinecap="butt"
                 linePoints={linePoints}
                 strokeWidth={UNDERLINE_STROKE_WIDTH}
-                strokeDasharray={strokeStyle === 'dashed' ? '2,2' : undefined}
+                strokeDasharray={strokeStyle === 'dashed' ? strokeDashedArray : undefined}
             />
 
             <ResizeKnobsSvgRenderer

@@ -112,7 +112,7 @@ export type LabelerProps<T extends ITokenStore> = {
      * function provided in this parameter. Used if you want to render
      * your custom tokens.
      */
-    onTokenRender?: (props: ITokenRendererProps<T>) => React.ReactNode;
+    onTokenRender?: (props: ITokenRendererProps<T>, defaultRenderer?: (props: ITokenRendererProps<T>) => React.ReactNode) => React.ReactNode;
 
     /**
      * A map of annotation kinds and factory functions that can convert

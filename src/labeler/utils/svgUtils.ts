@@ -31,12 +31,14 @@ const toSvgRenderProps = (
     isRtl: boolean,
     data: AnnotationDomData,
     linePoints: [Point, Point][],
-    strokeStyle: 'dashed' | 'solid' = 'solid'
+    strokeStyle: 'dashed' | 'solid' = 'solid',
+    strokeDashedArray: string = '2,2' 
 ): UnderlineSvgRendererProps | RelationSvgRendererProps => ({
     kind,
     linePoints,
     strokeStyle,
     name: data.name,
+    strokeDashedArray,
     opacity: data.opacity,
     onClick: data.onClick,
     onResize: data.onResize,
@@ -94,7 +96,7 @@ export const labelAnnotationToSvgPropsFactory: ISvgRendererPropsFactory = ({
         }
     }
 
-    return toSvgRenderProps('underline', isRtl, data, linePoints, data.kind === 'negativeLabel' ? 'dashed' : 'solid');
+    return toSvgRenderProps('underline', isRtl, data, linePoints, data.kind === 'negativeLabel' ? 'dashed' : 'solid', data.dashesLength);
 };
 
 /**
