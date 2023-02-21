@@ -40,6 +40,6 @@ Handles all selection and a11y actions fired from a line in a labeler. The event
 
 Gets the max width of the labeler lines and x offset of the svg layer.
 
-# `getTargetIndex`function
+# `getTargetIndex` function
 
 Gets the indices of previous and next lines to focus based on the current direction.
