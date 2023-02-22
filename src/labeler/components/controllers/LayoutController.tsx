@@ -57,7 +57,7 @@ export type LayoutControllerProps<T extends ITokenStore> = {
     onSvgRenderMap?: Map<SvgRendererKind, ISvgRenderer>;
     globalEventExceptionSelectors?: GlobalEventExceptionPredicates;
     onRenderAnnotationColor?: (annotation: AnnotationData) => string;
-    onTokenRender: (props: ITokenRendererProps<T>) => React.ReactNode;
+    onTokenRender: (props: ITokenRendererProps<T>, defaultRenderer?: (props: ITokenRendererProps<T>) => React.ReactNode) => React.ReactNode;
     annotationToSvgPropsMap?: Map<AnnotationKind, ISvgRendererPropsFactory>;
 };
 

@@ -37,7 +37,7 @@ export type LineRendererProps<T extends ITokenStore> = {
     getLineHeight?: LineHeightCalculator;
     tokenPaddingCalculators: TokenPaddingCalculator[];
     onHeightChange: (index: number, height: number) => void;
-    onTokenRender: (props: ITokenRendererProps<T>) => React.ReactNode;
+    onTokenRender: (props: ITokenRendererProps<T>, defaultRenderer?: (props: ITokenRendererProps<T>) => React.ReactNode) => React.ReactNode;
 };
 
 const LineRoot = styled.div(props => ({
@@ -87,10 +87,10 @@ export const LineRenderer = observer(<T extends ITokenStore>(props: LineRenderer
         lineStore,
         onRendered,
         targetIndex,
+        onTokenRender,
         onHeightChange,
         tokenPaddingCalculators,
         getLineHeight = getDefaultLineHeight,
-        onTokenRender = defaultTokenRenderer
     } = props;
 
     const theme = useTheme();
@@ -119,10 +119,11 @@ export const LineRenderer = observer(<T extends ITokenStore>(props: LineRenderer
         return !configStore.enableVirtualization || (configStore.enableVirtualization && isLineInViewport);
     }).get();
 
+    const onTokenRenderer = onTokenRender ?? defaultTokenRenderer;
     const realLineStyles = { paddingTop, paddingBottom, width: 'fit-content' };
     const virtualLineStyles = { minHeight: getLineHeight({ lineStore, paddingTop, paddingBottom }) };
-    const tokens = isRealLine ? lineStore.tokenStores.map(tokenStore => onTokenRender({ tokenStore, lineStore })) : [];
     const commonRendererProps = { theme, ref: lineRef, [lineDataAttribute]: true, [lineIndexDataAttribute]: `${lineStore.index}` };
+    const tokens = isRealLine ? lineStore.tokenStores.map(tokenStore => onTokenRenderer({ tokenStore, lineStore }, defaultTokenRenderer)) : [];
 
     const handleKeyDown = React.useCallback(
         event => onLineRendererKeyDown({ event, lineStore, a11yStore, lineRef: lineRef.current, selectionStore, targetIndex }),
