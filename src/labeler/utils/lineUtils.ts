@@ -373,24 +373,28 @@ export const getTargetIndex = (lineStores: LineStore<TokenStore>[], index: numbe
         return targetIndex;
     }
 
-    for (let i = nextLineIndex; i < linesLength; i++) {
+    let i = nextLineIndex;
+    while (i < linesLength) {
         if (isLineFocusable(lineStores[i].tokenStores)) {
             targetIndex = { previous: previousLineIndex, next: i };
             break;
         }
         if (i === linesLength - 1) {
-            i = 0;
+            i = -1;
         }
+        i++;
     }
 
-    for (let i = previousLineIndex; i > -1; i--) {
+    i = previousLineIndex;
+    while (i > -1) {
         if (isLineFocusable(lineStores[i].tokenStores)) {
             targetIndex = { ...targetIndex, previous: i };
             break;
         }
         if (i === 0) {
-            i = linesLength - 1;
+            i = linesLength;
         }
+        i--;
     }
 
     return targetIndex;

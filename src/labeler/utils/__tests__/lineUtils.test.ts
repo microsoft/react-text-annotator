@@ -13,6 +13,7 @@ import {
     getCharAndTokenMapping,
     getLineElementByIndex,
     getLineInfos,
+    getTargetIndex,
     getTokens,
     onLineRendererKeyDown
 } from '../../utils/lineUtils';
@@ -343,4 +344,38 @@ describe('lineUtils unit tests', () => {
             expect(mockSelect).toHaveBeenCalledWith(2);
         });
     });
+
+    describe('getTargetIndex unit tests', () => {
+ 
+        const mockLineStore = [
+        new LineStore(0, 1, [new TokenStore(0, '7'), new TokenStore(1, 'a'), new TokenStore(2, 'a')]),
+        new LineStore(1, 2, [ new TokenStore(0, '\n')]),
+        new LineStore(2, 3, [new TokenStore(0, '7'), new TokenStore(1, 'a'), new TokenStore(2, 's')]),
+        new LineStore(3, 4, [ new TokenStore(0, '\n')]),
+        new LineStore(4, 5, [new TokenStore(0, '7'), new TokenStore(1, 'a'), new TokenStore(2, 's')]),
+       
+    ];
+    
+        it('should detect that it is the first line and the previous is last line', ()=>{
+            const mockResult = getTargetIndex(mockLineStore,0)
+    
+            expect(mockResult).toEqual({previous:4,next:2})
+        });
+        it('should detect the next and previous lines correctly', ()=>{
+            const mockResult = getTargetIndex(mockLineStore,2)
+    
+            expect(mockResult).toEqual({previous:0,next:4})
+        });
+        it('should detect it is a space or \n or \r', ()=>{
+            const mockResult = getTargetIndex(mockLineStore,1)
+    
+            expect(mockResult).toEqual(undefined)
+        });
+        it('should detect that it is the last line and the next is first line', ()=>{
+            const mockResult = getTargetIndex(mockLineStore,4)
+    
+            expect(mockResult).toEqual({previous:2,next:0})
+        });
+
+    })
 });

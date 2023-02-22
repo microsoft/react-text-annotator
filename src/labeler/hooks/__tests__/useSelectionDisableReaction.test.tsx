@@ -21,9 +21,9 @@ describe('useSelectionDisableReaction unit tests', () => {
     });
 
     beforeEach(() => {
-        jest.resetAllMocks();
         mockLabelerStore.configStore.setIsDisabled(false);
     });
+    afterEach(()=>jest.resetAllMocks())
 
     it('should call un-hover and cancel selection whenever isSelectionDisabled is true', () => {
         mount(<Wrapper />);
