@@ -4,6 +4,7 @@
 
  import { observer, useLocalStore } from 'mobx-react';
  import * as React from 'react';
+ import { getId } from '@fluentui/react/lib/Utilities';
  import { LayoutController } from './components/controllers/LayoutController';
  import { useAnnotationIndexConverter } from './hooks/useAnnotationIndexConverter';
  import { useAnnotationResizer } from './hooks/useAnnotationResizer';
@@ -46,6 +47,7 @@
      React.forwardRef(<T extends ITokenStore>(props: LabelerProps<T>, labelerRef: React.MutableRefObject<LabelerRef>) => {
          const {
              text,
+             key = getId(),
              onTokenRender,
              getLineHeight,
              onSvgRenderMap,
@@ -136,7 +138,7 @@
          }, [annotationStore?.annotations, lineStores, annotationIdToScrollIntoView]);
  
          return (
-             <LabelerStoreContext.Provider value={labelerStore}>
+             <LabelerStoreContext.Provider key={key} value={labelerStore}>
                  <ThemeProvider theme={theme}>
                      <LayoutController
                          text={text}
