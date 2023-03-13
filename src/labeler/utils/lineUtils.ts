@@ -9,10 +9,10 @@ import { LineStore } from '../stores/LineStore';
 import { TokenStore } from '../stores/TokenStore';
 import { CharToTokenMapType, ITokenStore, TargetIndex, TokenToCharMapType } from '../types/labelerTypes';
 import {
+    LabelerKeyCodes,
     LABELER_HORIZONTAL_PADDING,
     lineDataAttribute,
     lineIndexDataAttribute,
-    LabelerKeyCodes,
     nextLineChars
 } from '../utils/labelerConstants';
 import { isCharacterCjk } from '../utils/languageUtils';
@@ -136,7 +136,7 @@ export const getTokens = (text: string, lines: LineDto[], configStore: LabelerCo
         for (let index = line.tokenRangeIndices[0]; index <= line.tokenRangeIndices[1]; index++) {
             if (tokenizationType === 'character') {
                 tokens.push(text[index]);
-            } else if (text[index] in nextLineChars || text[index] === ' ') {
+            } else if (isTokenInNextLineChars(text[index]) || text[index] === ' ') {
                 if (currentWord.length) {
                     tokens.push(currentWord);
                     currentWord = '';
@@ -186,7 +186,7 @@ export const getCharAndTokenMapping = (text: string, lines: LineDto[], configSto
                 charToTokenMap.set(index, index);
                 tokenToCharMap.set(index, { startIndex: index, endIndex: index });
                 tokenNumber++;
-            } else if (text[index] in nextLineChars || text[index] === ' ') {
+            } else if (isTokenInNextLineChars(text[index]) || text[index] === ' ') {
                 if (currentWord.length) {
                     tokenToCharMap.set(tokenNumber, { startIndex: index - currentWord.length, endIndex: index - 1 });
                     tokenNumber++;
@@ -399,3 +399,5 @@ export const getTargetIndex = (lineStores: LineStore<TokenStore>[], index: numbe
 
     return targetIndex;
 };
+
+const isTokenInNextLineChars = (token: string) => nextLineChars.indexOf(token) !== -1;
