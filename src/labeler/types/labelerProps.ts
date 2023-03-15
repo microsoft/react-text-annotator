@@ -20,6 +20,13 @@ import { DefaultTheme } from 'styled-components';
 
 export type LabelerProps<T extends ITokenStore> = {
     /**
+     * A unique key value for the labeler instance to not break the component
+     * while changing any other props like: text and annotations.
+     */
+
+    key?: string;
+
+    /**
      * Raw un-tokenized text to display in the labeler. Text
      * is tokenized by characters.
      */
