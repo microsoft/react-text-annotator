@@ -28,6 +28,8 @@ export class LabelerConfigStore {
 
     @observable public isDisabled: boolean;
 
+    @observable public areAnnotationsValid: boolean;
+
     @observable public isSelectionDisabled: boolean;
 
     @observable public enableVirtualization: boolean;
@@ -45,6 +47,7 @@ export class LabelerConfigStore {
     @observable public wordBreak: 'normal' | 'breakAll' | 'keepAll';
 
     constructor(initialParams?: LabelerConfigStoreParameters) {
+        this.areAnnotationsValid = true;
         this.isRtl = initialParams?.isRtl ?? false;
         this.isDisabled = initialParams?.isDisabled ?? false;
         this.wordBreak = initialParams?.wordBreak ?? 'normal';
@@ -55,6 +58,11 @@ export class LabelerConfigStore {
         this.isSelectionDisabled = this.isDisabled ? true : initialParams?.isSelectionDisabled ?? false;
         this.areAnnotationsClickable = this.isDisabled ? false : initialParams?.areAnnotationsClickable ?? true;
         this.isAnnotationResizingEnabled = this.isDisabled ? false : initialParams?.isAnnotationResizingEnabled ?? false;
+    }
+
+    @action
+    public setAreAnnotationValid(value: boolean) {
+        this.areAnnotationsValid = value;
     }
 
     @action

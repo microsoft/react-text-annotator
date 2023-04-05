@@ -116,20 +116,22 @@ export const annotationDataToAnnotationDomData = <T extends ITokenStore>({
     const endLine = lineStores.find(l => l.tokenRangeIndices[0] <= annotation.endToken && annotation.endToken <= l.tokenRangeIndices[1]);
     const lineSegments: AnnotationDomLineData[] = [];
 
-    if (startLine.index === endLine.index) {
-        lineSegments.push({ startToken: annotation.startToken, endToken: annotation.endToken, lineIndex: startLine.index });
-    } else {
-        lineSegments.push({ startToken: annotation.startToken, endToken: startLine.tokenRangeIndices[1], lineIndex: startLine.index });
+    if (startLine && endLine) {
+        if (startLine.index === endLine.index) {
+            lineSegments.push({ startToken: annotation.startToken, endToken: annotation.endToken, lineIndex: startLine.index });
+        } else {
+            lineSegments.push({ startToken: annotation.startToken, endToken: startLine.tokenRangeIndices[1], lineIndex: startLine.index });
 
-        for (let i = startLine.index + 1; i < endLine.index; i++) {
-            lineSegments.push({
-                lineIndex: lineStores[i].index,
-                endToken: lineStores[i].tokenRangeIndices[1],
-                startToken: lineStores[i].tokenRangeIndices[0]
-            });
+            for (let i = startLine.index + 1; i < endLine.index; i++) {
+                lineSegments.push({
+                    lineIndex: lineStores[i].index,
+                    endToken: lineStores[i].tokenRangeIndices[1],
+                    startToken: lineStores[i].tokenRangeIndices[0]
+                });
+            }
+
+            lineSegments.push({ startToken: endLine.tokenRangeIndices[0], endToken: annotation.endToken, lineIndex: endLine.index });
         }
-
-        lineSegments.push({ startToken: endLine.tokenRangeIndices[0], endToken: annotation.endToken, lineIndex: endLine.index });
     }
 
     return { ...annotation, color: onRenderAnnotationColor?.(annotation) ?? annotation.color, lineSegments };

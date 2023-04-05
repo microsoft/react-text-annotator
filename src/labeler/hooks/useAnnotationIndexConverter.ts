@@ -18,14 +18,15 @@ type LabelerCallback = (annotation: AnnotationData, ...args: LabelerCallbackArgu
  */
 export const useAnnotationIndexConverter = (tokenToCharMap: TokenToCharMapType, callback: LabelerCallback) =>
     React.useCallback(
-        (annotation: AnnotationData, ...args: LabelerCallbackArgument[]) =>
-            callback(
+        (annotation: AnnotationData, ...args: LabelerCallbackArgument[]) => {
+            return callback(
                 {
                     ...annotation,
-                    endToken: tokenToCharMap.get(annotation.endToken).endIndex,
-                    startToken: tokenToCharMap.get(annotation.startToken).startIndex
+                    endToken: tokenToCharMap.get(annotation.endToken)?.endIndex,
+                    startToken: tokenToCharMap.get(annotation.startToken)?.startIndex
                 },
                 ...args
-            ),
-        [callback]
+            );
+        },
+        [callback, tokenToCharMap]
     );
