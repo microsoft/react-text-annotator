@@ -41,7 +41,7 @@ export const Labeler = observer(
     React.forwardRef(<T extends ITokenStore>(props: LabelerProps<T>, labelerRef: React.MutableRefObject<LabelerRef>) => {
         const {
             text,
-            key = getId(),
+            key,
             onTokenRender,
             getLineHeight,
             onSvgRenderMap,
@@ -63,6 +63,7 @@ export const Labeler = observer(
             tokenEventListenersWithDeps = defaultTokenEventListeners
         } = props;
 
+        const labelerKey = React.useRef<string>(getId());
         const layoutControllerRef = React.useRef<HTMLDivElement>();
         const labelerStore = useLocalStore(() => new LabelerStore({ initialConfigs: labelerConfigs }));
         const { configStore, selectionStore, annotationStore } = labelerStore;
@@ -144,7 +145,7 @@ export const Labeler = observer(
         }, [annotationStore?.annotations, lineStores, annotationIdToScrollIntoView]);
 
         return (
-            <LabelerStoreContext.Provider key={key} value={labelerStore}>
+            <LabelerStoreContext.Provider key={key ?? labelerKey.current} value={labelerStore}>
                 <ThemeProvider theme={theme}>
                     <LayoutController
                         text={text}
