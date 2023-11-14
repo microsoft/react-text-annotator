@@ -110,7 +110,7 @@ const useScrollTracker = (containerRef: React.MutableRefObject<HTMLDivElement>) 
         setScrollTop(containerRef.current.scrollTop);
         containerRef.current.addEventListener('scroll', onScroll);
 
-        return () => containerRef.current.removeEventListener('scroll', onScroll);
+        return () => containerRef.current?.removeEventListener('scroll', onScroll);
     }, [containerRef]);
 
     return scrollTop;
